@@ -1,9 +1,7 @@
 import os
 import shutil
 
-class config:
-	repo = "REPLACE"
-	vcs = vcs()
+# TODO make file absolute path, os.path.abspath
 
 class vcs:
 	def add(toAdd):
@@ -11,6 +9,10 @@ class vcs:
 
 	def update(toUpdate):
 		pass
+
+class config:
+	repo = "test-repo"
+	vcs = vcs()
 
 def checkFile(file):
 	if not os.path.isfile(file):
@@ -31,7 +33,6 @@ def addOrUpdate(file, config):
 		update(stored, config.vcs)
 	else:
 		add(file, config)
-		
 
 def add(toAdd, config):
 	shutil.move(file, config.repo)
@@ -43,5 +44,9 @@ def update(toUpdate, vcs):
 	vcs.update(toUpdate)
 
 def remove(toRemove, vcs):
+	# TODO implement
 	pass
 
+def revert(toRevert, vcs):
+	# TODO implement
+	pass
