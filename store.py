@@ -1,17 +1,20 @@
 
 class MockStore:
-	def create(config):
-		print ("store: create")
+	def __init__(self, cfg):
+		# TODO create if store doesn't exist
+		pass
 
-	def add(file):
+	def add(self, file):
 		print ("store: add")
 
-	def update(file):
+	def update(self, file):
 		print ("store: update")
 	
-	def remove(file):
+	def remove(self, file):
 		print ("store: remove")
 	
-	def revert(file):
+	def revert(self, file):
 		print ("store: revert")
 
+	def _create(self, config):
+		print ("store: create")

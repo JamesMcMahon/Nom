@@ -1,14 +1,24 @@
 
+# Indexs are design for a single machine / enviroment
+# and will NOT be version controlled
+
+# index - file full path to file name (entry in VCS)
+# allows reverse lookup from sim links 
 class Index:
 	
-	def add(entry):
+	def __init___(self, cfg):
+		#TODO create if the index doesn't exist
 		pass
 
-	def exists(entry):
+	def add(self, file):
+		pass
+
+	def exists(self, file):
 		pass	
 	
-	def remove(entry):
+	def remove(self, file):
 		pass
 
-	def replace(entry):
+	def replace(self, file):
 		pass
+
