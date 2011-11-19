@@ -7,7 +7,7 @@ import os
 
 class Config:
 	nomDir = ".nom" #FIXME should be $HOME/nom
-	storeDir = os.join(nomDir, "store")
+	storeDir = os.path.join(nomDir, "store")
 
 	# XXX both of these constructors are responsible for creating 
 	# files and directories if they don't exists, 
