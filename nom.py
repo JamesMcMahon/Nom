@@ -9,6 +9,9 @@ class vcs:
 
 	def update(toUpdate):
 		pass
+	
+	def revert(toRevert):
+		pass
 
 class config:
 	repo = "test-repo"
