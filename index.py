@@ -5,8 +5,7 @@
 # index - file full path to file name (entry in VCS)
 # allows reverse lookup from sim links 
 class Index:
-	
-	def __init___(self, cfg):
+	def __init__(self, cfg):
 		#TODO create if the index doesn't exist
 		pass
 

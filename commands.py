@@ -1,5 +1,6 @@
 import os
 import shutil
+import dispatcher
 
 """
 def checkFile(file):
@@ -14,7 +15,9 @@ def checkFile(file):
 	# 4. Is the file a file or directory
 	pass
 """
+cli = dispatcher.cli_datastruct({})
 
+@cli('add')
 def add(file, cfg):
 	if cfg.index.exists(file):
 		#TODO throw error
@@ -25,6 +28,7 @@ def add(file, cfg):
 	cfg.store.add(file)
 	cfg.index.add(file)
 
+@cli('update')
 def update(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
@@ -32,6 +36,7 @@ def update(file, cfg):
 
 	cfg.store.update(file)
 
+@cli('replace')
 def replace(file, cfg):
 	if cfg.index.exists(file):
 		#TODO throw error
@@ -40,6 +45,7 @@ def replace(file, cfg):
 	# TODO implement
 	pass
 
+@cli('remove')
 def remove(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
@@ -48,6 +54,7 @@ def remove(file, cfg):
 	# TODO implement
 	pass
 
+@cli('revert')
 def revert(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
