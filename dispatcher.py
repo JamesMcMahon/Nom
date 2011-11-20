@@ -1,10 +1,14 @@
 import sys
 
+ds = None
+
 def cli_datastruct(dict):
+	global ds
+	ds = dict
 	def cli_definer(name):
 		def cli_decorator(fn):
 			# wrapper would go here
-			print ('adding cli function ', fn)
+			# print ('adding cli function ', fn)
 			dict[name] = fn
 			return fn
 		return cli_decorator
@@ -12,5 +16,10 @@ def cli_datastruct(dict):
 
 def run(cfg):
 	args = sys.argv[1:] 
-	# TODO interpret command line options and dispatch
-	pass
+
+	# Temp code, gets first args, dispatches
+	func = ds[args[0]]
+	file = args[1]
+	func(file, cfg)
+
+	sys.exit()	

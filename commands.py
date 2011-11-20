@@ -21,10 +21,10 @@ cli = dispatcher.cli_datastruct({})
 def add(file, cfg):
 	if cfg.index.exists(file):
 		#TODO throw error
-		pass
+		return
 
-	shutil.move(file, config.repo)
-	os.symlink(os.join(config.repo, file), file)
+	shutil.move(file, cfg.storeDir)
+	os.symlink(os.path.join(cfg.storeDir, file), file)
 	cfg.store.add(file)
 	cfg.index.add(file)
 
@@ -32,7 +32,9 @@ def add(file, cfg):
 def update(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
-		pass
+		return
+	if not os.path.islink(file):
+		return 
 
 	cfg.store.update(file)
 
@@ -40,7 +42,9 @@ def update(file, cfg):
 def replace(file, cfg):
 	if cfg.index.exists(file):
 		#TODO throw error
-		pass
+		return
+	if not os.path.islink(file):
+		return 
 
 	# TODO implement
 	pass
@@ -49,16 +53,27 @@ def replace(file, cfg):
 def remove(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
-		pass
+		return
+	if not os.path.islink(file):
+		return
 
-	# TODO implement
-	pass
+	cfg.index.remove(file)
+	cfg.store.remove(file)
+
+	if os.path.isdir(file):
+		os.removedirs(file)
+	else:
+		os.remove(file)
+
+	shutil.move(os.path.join(cfg.storeDir, file), file)
 
 @cli('revert')
 def revert(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
-		pass
+		return
+	if not os.path.islink(file):
+		return 
 
 	cfg.store.revert(file)
 
