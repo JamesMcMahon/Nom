@@ -12,6 +12,7 @@ from index import Index
 class Config:
 	nomDir = "nom-test" #FIXME should be $HOME/.nom
 	storeDir = os.path.join(nomDir, "store")
+	indexName = "index"
 
 	def __init__(self):
 			# XXX both of these constructors are responsible for creating 

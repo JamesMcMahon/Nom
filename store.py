@@ -1,8 +1,9 @@
+import os
 
 class MockStore:
 	def __init__(self, cfg):
-		# TODO create if store doesn't exist
-		pass
+		if not os.path.exists(cfg.storeDir):
+			self._create(cfg)
 
 	def add(self, file):
 		print ("store: add")
@@ -16,5 +17,7 @@ class MockStore:
 	def revert(self, file):
 		print ("store: revert")
 
-	def _create(self, config):
+	def _create(self, cfg):
 		print ("store: create")
+		os.makedirs(cfg.storeDir)
+

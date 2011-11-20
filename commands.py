@@ -21,10 +21,16 @@ cli = dispatcher.cli_datastruct({})
 def add(file, cfg):
 	if cfg.index.exists(file):
 		#TODO throw error
+		print "file already exists in index, can't add"
+		return
+ 	storePath = os.path.join(cfg.storeDir, file)
+	if os.path.exists(storePath):
+		#TODO throw error
+		print "file already exists in store, can't add"
 		return
 
 	shutil.move(file, cfg.storeDir)
-	os.symlink(os.path.join(cfg.storeDir, file), file)
+	os.symlink(storePath, file)
 	cfg.store.add(file)
 	cfg.index.add(file)
 
