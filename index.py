@@ -1,4 +1,4 @@
-# Indexs are design for a single machine / enviroment
+# Indexs are designed for a single machine / enviroment
 # and will NOT be version controlled
 
 # index - file full path to file name (entry in VCS)
