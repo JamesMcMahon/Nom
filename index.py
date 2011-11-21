@@ -18,7 +18,7 @@ class Index:
 	def add(self, file):
 		absPath = os.path.abspath(file)		
 
-		with open(self.indexPath, 'w') as index:
+		with open(self.indexPath, 'a') as index:
 			# FIXME is there a constant for end of line in python?
 			index.write(absPath + self.delimiter + file + '\n')
 
@@ -68,7 +68,6 @@ class Index:
 
 				seekpoint = fro.tell()
 				frw.seek(seekpoint, 0)
-				print 'seekpoint ', seekpoint
 
 				# read the line we want to discard
 				fro.readline()
