@@ -36,7 +36,7 @@ class Index:
 
 		lineNumber = self._findLine(file)
 		if lineNumber is not None:
-			self._removeLine(file, lineNumber)
+			self._removeLine(self.indexPath, lineNumber)
 
 	def replace(self, file):
 		pass
