@@ -4,6 +4,7 @@
 #
 
 import os
+import sys
 import commands
 import cli
 from store import MockStore
@@ -25,3 +26,4 @@ class Config:
 # but for now, just use the constants
 cfg = Config()
 cli.dispatch(cfg)
+sys.exit()	

@@ -22,4 +22,3 @@ def dispatch(cfg):
 	file = args[1]
 	func(file, cfg)
 
-	sys.exit()	
