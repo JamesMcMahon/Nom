@@ -1,23 +1,38 @@
 import os
+import git
 
-class MockStore:
+class GitPythonStore:
 	def __init__(self, cfg):
 		if not os.path.exists(cfg.storeDir):
-			self._create(cfg)
+			os.makedirs(cfg.storeDir)
+
+		if not os.path.exists(os.path.join(cfg.storeDir, '.git')):
+			self.repo = git.Repo.init(cfg.storeDir)
+		else:
+			self.repo = git.Repo(cfg.storeDir)
 
 	def add(self, file):
-		print ("store: add")
+		if not self.repo.untracked_files:
+			pass
+		index = self.repo.index
+		index.add([file])
+		index.commit('Nom: adding ' + file)
 
 	def update(self, file):
-		print ("store: update")
+		if not self.repo.is_dirty():
+			pass
+		index = self.repo.index
+		index.add([file])
+		index.commit('Nom: updating ' + file)
 	
 	def remove(self, file):
-		print ("store: remove")
+		index = self.repo.index
+		index.remove([file])
+		index.commit('Nom: removing ' + file)
 	
 	def revert(self, file):
-		print ("store: revert")
-
-	def _create(self, cfg):
-		print ("store: create")
-		os.makedirs(cfg.storeDir)
+		if not self.repo.is_dirty():
+			pass
+		print 'revert not implemented yet'
+		pass
 

@@ -1,2 +1,5 @@
 This isn't much of anything yet.
 
+Dependencies:
+	gitpython - for git storage
+

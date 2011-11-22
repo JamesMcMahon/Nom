@@ -7,7 +7,7 @@ import os
 import sys
 import commands
 import cli
-from store import MockStore
+from store import GitPythonStore
 from index import FileIndex
 
 class Config:
@@ -19,7 +19,7 @@ class Config:
 			# XXX both of these constructors are responsible for creating 
 			# files and directories if they don't exists, 
 			# might want to rethink this
-			self.store = MockStore(self)
+			self.store = GitPythonStore(self)
 			self.index = FileIndex(self)
 
 # in the future this might load a config
