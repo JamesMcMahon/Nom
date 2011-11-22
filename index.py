@@ -6,7 +6,7 @@
 
 import os
 
-class Index:
+class FileIndex:
 	delimiter = '|'
 
 	def __init__(self, cfg):
