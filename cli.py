@@ -14,7 +14,7 @@ def cli_datastruct(dict):
 		return cli_decorator
 	return cli_definer 
 
-def run(cfg):
+def dispatch(cfg):
 	args = sys.argv[1:] 
 
 	# Temp code, gets first args, dispatches

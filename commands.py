@@ -1,6 +1,6 @@
 import os
 import shutil
-import dispatcher
+import cli
 
 """
 def checkFile(file):
@@ -15,7 +15,7 @@ def checkFile(file):
 	# 4. Is the file a file or directory
 	pass
 """
-cli = dispatcher.cli_datastruct({})
+cli = cli.cli_datastruct({})
 
 @cli('add')
 def add(file, cfg):
