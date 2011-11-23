@@ -35,6 +35,6 @@ class GitPythonStore:
 	def revert(self, file):
 		if not self.repo.is_dirty():
 			pass
-		print 'revert not implemented yet'
-		pass
+		index = self.repo.index
+		index.checkout([file], force=True)
 
