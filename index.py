@@ -23,8 +23,6 @@ class FileIndex:
 			index.write(absPath + self.delimiter + file + '\n')
 
 	def exists(self, file):
-		absPath = os.path.abspath(file)	
-
 		lineNumber = self._findLine(file)
 		if lineNumber is not None:
 			return True
