@@ -33,7 +33,7 @@ class GitPythonStore:
 	def remove(self, file):
 		index = self.repo.index
 		# check to see if the file exists in the repo before removing
-		index.remove([file])
+		index.remove([file], r=True)
 		index.commit('Nom: removing ' + file)
 	
 	def revert(self, file):
