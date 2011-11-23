@@ -45,13 +45,11 @@ def update(file, cfg):
 
 	cfg.store.update(file)
 
-@cli('replace')
+#@cli('replace')
 def replace(file, cfg):
-	if not cfg.index.exists(file):
+	if cfg.index.exists(file):
 		#TODO throw error
 		return
-	if not os.path.islink(file):
-		return 
 
 	# TODO implement
 	pass
