@@ -38,9 +38,11 @@ def add(file, cfg):
 @cli('update')
 def update(file, cfg):
 	if not cfg.index.exists(file):
+		print "file does not exist in the index, can't update"
 		#TODO throw error
 		return
 	if not os.path.islink(file):
+		print "file is not a link, can't update"
 		return 
 
 	cfg.store.update(file)
@@ -49,6 +51,7 @@ def update(file, cfg):
 def replace(file, cfg):
 	if cfg.index.exists(file):
 		#TODO throw error
+		print "file already exists in index, can't replace"
 		return
 
 	# TODO implement
@@ -58,8 +61,10 @@ def replace(file, cfg):
 def remove(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
+		print "file does not exist in the index, can't remove"
 		return
 	if not os.path.islink(file):
+		print "file is not a link, can't remove"
 		return
 
 	cfg.index.remove(file)
@@ -76,8 +81,10 @@ def remove(file, cfg):
 def revert(file, cfg):
 	if not cfg.index.exists(file):
 		#TODO throw error
+		print "file does not exist in the index, can't revert"
 		return
 	if not os.path.islink(file):
+		print "file is not a link, can't revert"
 		return 
 
 	cfg.store.revert(file)
