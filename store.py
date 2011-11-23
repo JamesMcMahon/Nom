@@ -1,6 +1,7 @@
 import os
 import git
 
+# when commiting through gitpython there is an issue creating empty commits
 class GitPythonStore:
 	def __init__(self, cfg):
 		if not os.path.exists(cfg.storeDir):
@@ -27,6 +28,7 @@ class GitPythonStore:
 	
 	def remove(self, file):
 		index = self.repo.index
+		# check to see if the file exists in the repo before removing
 		index.remove([file])
 		index.commit('Nom: removing ' + file)
 	
