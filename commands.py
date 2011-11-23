@@ -46,7 +46,7 @@ def update(file, cfg):
 
 @cli('replace')
 def replace(file, cfg):
-	if cfg.index.exists(file):
+	if not cfg.index.exists(file):
 		#TODO throw error
 		return
 	if not os.path.islink(file):
