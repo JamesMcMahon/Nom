@@ -24,6 +24,7 @@ def add(file, cfg):
 		print "file already exists in index, can't add"
 		return
  	storePath = os.path.join(cfg.storeDir, file)
+	#TODO in the future allow adding of files with same names 
 	if os.path.exists(storePath):
 		#TODO throw error
 		print "file already exists in store, can't add"
