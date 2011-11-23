@@ -11,7 +11,7 @@ from store import GitPythonStore
 from index import FileIndex
 
 class Config:
-	nomDir = "nom-test" #FIXME should be $HOME/.nom
+	nomDir = os.path.join(os.environ["HOME"], ".nom") 
 	storeDir = os.path.join(nomDir, "store")
 	indexName = "index"
 
