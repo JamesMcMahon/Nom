@@ -9,6 +9,10 @@ class GitPythonStore:
 
 		if not os.path.exists(os.path.join(cfg.storeDir, '.git')):
 			self.repo = git.Repo.init(cfg.storeDir)
+			cw = self.repo.config_writer()
+			cw.set_value('user', 'name', 'nom')
+			cw.set_value('user', 'email', 'nom@github.com')
+			cw.write()
 		else:
 			self.repo = git.Repo(cfg.storeDir)
 
