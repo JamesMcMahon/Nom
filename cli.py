@@ -23,5 +23,6 @@ def dispatch(cfg):
 	file = args[1]
 	if not os.path.exists(file):
 		print 'invalid file'
+		return
 	func(file, cfg)
 
