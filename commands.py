@@ -69,12 +69,7 @@ def remove(file, cfg):
 
 	cfg.index.remove(file)
 	cfg.store.remove(file)
-
-	if os.path.isdir(file):
-		os.removedirs(file)
-	else:
-		os.remove(file)
-
+	os.remove(file)
 	shutil.move(os.path.join(cfg.storeDir, file), file)
 
 @cli('revert')
