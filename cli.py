@@ -1,3 +1,4 @@
+import os
 import sys
 
 ds = None
@@ -20,5 +21,7 @@ def dispatch(cfg):
 	# Temp code, gets first args, dispatches
 	func = ds[args[0]]
 	file = args[1]
+	if not os.path.exists(file):
+		print 'invalid file'
 	func(file, cfg)
 
