@@ -20,9 +20,14 @@ def dispatch(cfg):
 
 	# Temp code, gets first args, dispatches
 	func = ds[args[0]]
-	file = args[1]
-	if not os.path.exists(file):
-		print 'invalid file'
-		return
-	func(file, cfg)
+	
+	args = args[1:]
+	for file in args:
+			if not os.path.exists(file):
+				print 'invalid file ' + file
+				continue
+			if os.path.isdir(file):
+				print "can't operate on directories " + file
+				continue
+			func(file, cfg)
 
