@@ -24,6 +24,7 @@ class GitPythonStore:
 		index.commit('Nom: adding ' + file)
 
 	def update(self, file):
+		# FIXME the is_dirty check isn't working as expected
 		if not self.repo.is_dirty():
 			pass
 		index = self.repo.index
