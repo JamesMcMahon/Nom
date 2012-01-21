@@ -31,7 +31,7 @@ def add(file, cfg):
 		return
 
 	shutil.move(file, cfg.storeDir)
-	os.symlink(storePath, file.rstrip('/\\'))
+	os.symlink(storePath, file)
 	cfg.store.add(file)
 	cfg.index.add(file)
 
