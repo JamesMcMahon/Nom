@@ -1,5 +1,4 @@
 TODOS:
-
 	- redo CLI
 	- unit tests
 	- code documentation
@@ -10,4 +9,7 @@ MAYBES:
 	- change liscense to BSD
 
 BUGS:
-	- add isn't working on files no on current path eg 'subdir/file'
+	store:
+			- add isn't working on files no on current path eg 'subdir/file'
+			- same issue with remove
+
