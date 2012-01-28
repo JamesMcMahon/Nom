@@ -9,7 +9,6 @@ MAYBES:
 	- change liscense to BSD
 
 BUGS:
-	store:
-			- add isn't working on files no on current path eg 'subdir/file'
-			- same issue with remove
+	- store.py: add isn't working on files no on current path eg 'subdir/file'
+	- store.py: same issue with remove
 
