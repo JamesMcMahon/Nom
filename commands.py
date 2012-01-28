@@ -84,3 +84,16 @@ def revert(file, cfg):
 
 	cfg.store.revert(file)
 
+@cli('status')
+def status(file, cfg):
+	if not cfg.index.exists(file):
+		# not added
+		status = "?"
+	elif cfg.store.is_dirty(file):
+		# modified
+		status = "M"
+	else:
+		# stored with no modifications
+		status = "S"
+
+	print status + " " + file
