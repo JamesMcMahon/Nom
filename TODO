@@ -1,0 +1,13 @@
+TODOS:
+
+	- redo CLI
+	- unit tests
+	- code documentation
+	- read me
+
+MAYBES:
+	- add command to list content of index
+	- change liscense to BSD
+
+BUGS:
+	- add isn't working on files no on current path eg 'subdir/file'
