@@ -24,8 +24,7 @@ class GitPythonStore:
 		index.commit('Nom: adding ' + file)
 
 	def update(self, file):
-		# FIXME the is_dirty check isn't working as expected
-		if not self.repo.is_dirty():
+		if not self.is_dirty(file):
 			pass
 		index = self.repo.index
 		index.add([file])
@@ -38,8 +37,16 @@ class GitPythonStore:
 		index.commit('Nom: removing ' + file)
 	
 	def revert(self, file):
-		if not self.repo.is_dirty():
+		if not self.is_dirty(file):
 			pass
 		index = self.repo.index
 		index.checkout([file], force=True)
 
+	def is_dirty(self, file):
+		dIndex = self.repo.index.diff(None)
+		# check modified files
+		for diff in dIndex.iter_change_type('M'):
+			# a_blob should be locally modified files
+			if file == diff.a_blob.path:
+				return True
+		return False
