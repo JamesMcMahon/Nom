@@ -22,12 +22,12 @@ def dispatch(cfg):
 	func = ds[args[0]]
 	
 	args = args[1:]
-	for file in args:
-			if not os.path.exists(file):
-				print 'invalid file ' + file
+	for filename in args:
+			if not os.path.exists(filename):
+				print 'invalid filename ' + filename
 				continue
-			if os.path.isdir(file):
-				print "can't operate on directories " + file
+			if os.path.isdir(filename):
+				print "can't operate on directories " + filename
 				continue
-			func(file, cfg)
+			func(filename, cfg)
 

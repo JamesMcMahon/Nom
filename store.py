@@ -16,37 +16,37 @@ class GitPythonStore:
 		else:
 			self.repo = git.Repo(cfg.storeDir)
 
-	def add(self, file):
+	def add(self, filename):
 		if not self.repo.untracked_files:
 			pass
 		index = self.repo.index
-		index.add([file])
-		index.commit('Nom: adding ' + file)
+		index.add([filename])
+		index.commit('Nom: adding ' + filename)
 
-	def update(self, file):
-		if not self.is_dirty(file):
+	def update(self, filename):
+		if not self.is_dirty(filename):
 			pass
 		index = self.repo.index
-		index.add([file])
-		index.commit('Nom: updating ' + file)
+		index.add([filename])
+		index.commit('Nom: updating ' + filename)
 	
-	def remove(self, file):
+	def remove(self, filename):
 		index = self.repo.index
 		# check to see if the file exists in the repo before removing
-		index.remove([file], r=True)
-		index.commit('Nom: removing ' + file)
+		index.remove([filename], r=True)
+		index.commit('Nom: removing ' + filename)
 	
-	def revert(self, file):
-		if not self.is_dirty(file):
+	def revert(self, filename):
+		if not self.is_dirty(filename):
 			pass
 		index = self.repo.index
-		index.checkout([file], force=True)
+		index.checkout([filename], force=True)
 
-	def is_dirty(self, file):
+	def is_dirty(self, filename):
 		dIndex = self.repo.index.diff(None)
 		# check modified files
 		for diff in dIndex.iter_change_type('M'):
 			# a_blob should be locally modified files
-			if file == diff.a_blob.path:
+			if filename == diff.a_blob.path:
 				return True
 		return False

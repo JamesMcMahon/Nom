@@ -15,32 +15,32 @@ class FileIndex:
 		if not os.path.exists(self.indexPath):
 				open(self.indexPath, 'w').close()
 
-	def add(self, file):
-		absPath = os.path.abspath(file)		
+	def add(self, filename):
+		absPath = os.path.abspath(filename)		
 
 		with open(self.indexPath, 'a') as index:
 			# FIXME is there a constant for end of line in python?
-			index.write(absPath + self.delimiter + file + '\n')
+			index.write(absPath + self.delimiter + filename + '\n')
 
-	def exists(self, file):
-		lineNumber = self._findLine(file)
+	def exists(self, filename):
+		lineNumber = self._findLine(filename)
 		if lineNumber is not None:
 			return True
 		return False
 	
-	def remove(self, file):
+	def remove(self, filename):
 		# probably not the most efficent thing to seek twice
 		# can replace in the future
 
-		lineNumber = self._findLine(file)
+		lineNumber = self._findLine(filename)
 		if lineNumber is not None:
 			self._removeLine(self.indexPath, lineNumber)
 
-	def replace(self, file):
+	def replace(self, filename):
 		pass
 
-	def _findLine(self, file, full = True):
-		absPath = os.path.abspath(file)		
+	def _findLine(self, filename, full = True):
+		absPath = os.path.abspath(filename)		
 
 		lineNumber = 0
 		with open(self.indexPath, 'r') as index:
@@ -48,7 +48,7 @@ class FileIndex:
 				full, name = line.split(self.delimiter)
 				if full and absPath == full:
 					return lineNumber
-				elif not full and file == name:
+				elif not full and filename == name:
 					return lineNumber
 				lineNumber += 1
 		return None
