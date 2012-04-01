@@ -3,7 +3,7 @@ import os
 import sys
 
 ds = None
-parser = argparse.ArgumentParser(prog='Nom', description='Simple storage app')
+parser = argparse.ArgumentParser(prog='nom', description='Simple storage app')
 
 def cli_datastruct(dict):
 	global ds
