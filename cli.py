@@ -28,11 +28,15 @@ def file_check(filename):
 	return filename
 
 def dispatch(cfg):
-	parser.add_argument('func')
+	sub = parser.add_subparsers(help='sub-command help')
+	for fnName, fn in ds.items():
+		fp = sub.add_parser(fnName)
+		fp.set_defaults(func=fn)
+
 	parser.add_argument('filenames', type=file_check, nargs="+")
 	args = parser.parse_args()
 
-	func = ds[args.func]
+	func = args.func
 	for filename in args.filenames:
 		func(filename, cfg)
 
