@@ -32,10 +32,11 @@ def dispatch(cfg):
 	for fnName, fn in ds.items():
 		fp = sub.add_parser(fnName)
 		fp.set_defaults(func=fn)
+		# add filesnames to each sub argument
+		# currently this is needed by each command
+		fp.add_argument('filenames', type=file_check, nargs="+")
 
-	parser.add_argument('filenames', type=file_check, nargs="+")
 	args = parser.parse_args()
-
 	func = args.func
 	for filename in args.filenames:
 		func(filename, cfg)
