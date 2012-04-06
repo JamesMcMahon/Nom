@@ -30,7 +30,7 @@ def file_check(filename):
 	return filename
 
 def dispatch(cfg):
-	sub = parser.add_subparsers(help='sub-command help')
+	sub = parser.add_subparsers()
 	for fnName, fn in ds.items():
 		fp = sub.add_parser(fnName, help=helpDs[fnName])
 		fp.set_defaults(func=fn)
