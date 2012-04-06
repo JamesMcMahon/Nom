@@ -17,7 +17,7 @@ def checkFile(filename):
 """
 cli = cli.cli_datastruct({})
 
-@cli('add')
+@cli('add', 'add a file to the nom repo')
 def add(filename, cfg):
 	if cfg.index.exists(filename):
 		#TODO throw error
@@ -35,7 +35,7 @@ def add(filename, cfg):
 	cfg.store.add(filename)
 	cfg.index.add(filename)
 
-@cli('update')
+@cli('update', 'update a file in the nom repo')
 def update(filename, cfg):
 	if not cfg.index.exists(filename):
 		print "file does not exist in the index, can't update"
@@ -57,7 +57,7 @@ def replace(filename, cfg):
 	# TODO implement
 	pass
 
-@cli('remove')
+@cli('remove', 'remove a file from the nom repo')
 def remove(filename, cfg):
 	if not cfg.index.exists(filename):
 		#TODO throw error
@@ -72,7 +72,7 @@ def remove(filename, cfg):
 	os.remove(filename)
 	shutil.move(os.path.join(cfg.storeDir, filename), filename)
 
-@cli('revert')
+@cli('revert', 'revert a file in the nom repo')
 def revert(filename, cfg):
 	if not cfg.index.exists(filename):
 		#TODO throw error
@@ -84,7 +84,7 @@ def revert(filename, cfg):
 
 	cfg.store.revert(filename)
 
-@cli('status')
+@cli('status', 'check the status of a file in the nom repo')
 def status(filename, cfg):
 	if not cfg.index.exists(filename):
 		# not added
