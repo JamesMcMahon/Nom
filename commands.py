@@ -88,12 +88,12 @@ def revert(filename, cfg):
 def status(filename, cfg):
 	if not cfg.index.exists(filename):
 		# not added
-		status = "?"
+		status = "untracked:"
 	elif cfg.store.is_dirty(filename):
 		# modified
-		status = "M"
+		status = "modified:"
 	else:
 		# stored with no modifications
-		status = "S"
+		status = "unmodified:"
 
 	print status + " " + filename
