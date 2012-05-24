@@ -6,9 +6,11 @@ ds = None
 helpDs = {}
 parser = argparse.ArgumentParser(prog='nom', description='Simple storage app')
 
+
 def cli_datastruct(dict):
 	global ds
 	ds = dict
+
 	def cli_definer(name, help=None):
 		def cli_decorator(fn):
 			# wrapper would go here
@@ -19,6 +21,7 @@ def cli_datastruct(dict):
 		return cli_decorator
 	return cli_definer
 
+
 # FIXME this might be an abuse the type check for argparse
 def file_check(filename):
 	if not os.path.exists(filename):
@@ -28,6 +31,7 @@ def file_check(filename):
 		msg = "can't operate on directories " + filename
 		raise argparse.ArgumentTypeError(msg)
 	return filename
+
 
 def dispatch(cfg):
 	sub = parser.add_subparsers()
@@ -43,4 +47,3 @@ def dispatch(cfg):
 	func = args.func
 	for filename in args.filenames:
 		func(filename, cfg)
-

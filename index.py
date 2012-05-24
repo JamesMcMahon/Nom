@@ -2,9 +2,10 @@
 # and will NOT be version controlled
 
 # index - file full path to file name (entry in VCS)
-# allows reverse lookup from sim links 
+# allows reverse lookup from sim links
 
 import os
+
 
 class FileIndex:
 	delimiter = '|'
@@ -16,7 +17,7 @@ class FileIndex:
 				open(self.indexPath, 'w').close()
 
 	def add(self, filename):
-		absPath = os.path.abspath(filename)		
+		absPath = os.path.abspath(filename)
 
 		with open(self.indexPath, 'a') as index:
 			# FIXME is there a constant for end of line in python?
@@ -27,7 +28,7 @@ class FileIndex:
 		if lineNumber is not None:
 			return True
 		return False
-	
+
 	def remove(self, filename):
 		# probably not the most efficent thing to seek twice
 		# can replace in the future
@@ -39,8 +40,8 @@ class FileIndex:
 	def replace(self, filename):
 		pass
 
-	def _findLine(self, filename, full = True):
-		absPath = os.path.abspath(filename)		
+	def _findLine(self, filename, full=True):
+		absPath = os.path.abspath(filename)
 
 		lineNumber = 0
 		with open(self.indexPath, 'r') as index:
@@ -70,8 +71,8 @@ class FileIndex:
 				# read the line we want to discard
 				fro.readline()
 
-				# now move the rest of the lines in the file 
-				# one line back 
+				# now move the rest of the lines in the file
+				# one line back
 				chars = fro.readline()
 				while chars:
 					frw.writelines(chars)
@@ -80,4 +81,3 @@ class FileIndex:
 		finally:
 				fro.close()
 				frw.close()
-

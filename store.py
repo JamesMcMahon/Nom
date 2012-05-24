@@ -1,6 +1,7 @@
 import os
 import git
 
+
 # when commiting through gitpython there is an issue creating empty commits
 class GitPythonStore:
 	def __init__(self, cfg):
@@ -29,13 +30,13 @@ class GitPythonStore:
 		index = self.repo.index
 		index.add([filename])
 		index.commit('Nom: updating ' + filename)
-	
+
 	def remove(self, filename):
 		index = self.repo.index
 		# check to see if the file exists in the repo before removing
 		index.remove([filename], r=True)
 		index.commit('Nom: removing ' + filename)
-	
+
 	def revert(self, filename):
 		if not self.is_dirty(filename):
 			pass

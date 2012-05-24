@@ -17,14 +17,15 @@ def checkFile(filename):
 """
 cli = cli.cli_datastruct({})
 
+
 @cli('add', 'add a file to the nom repo')
 def add(filename, cfg):
 	if cfg.index.exists(filename):
 		#TODO throw error
 		print "file already exists in index, can't add"
 		return
- 	storePath = os.path.join(cfg.storeDir, filename)
-	#TODO in the future allow adding of files with same names 
+		storePath = os.path.join(cfg.storeDir, filename)
+	#TODO in the future allow adding of files with same names
 	if os.path.exists(storePath):
 		#TODO throw error
 		print "file already exists in store, can't add"
@@ -35,6 +36,7 @@ def add(filename, cfg):
 	cfg.store.add(filename)
 	cfg.index.add(filename)
 
+
 @cli('update', 'update a file in the nom repo')
 def update(filename, cfg):
 	if not cfg.index.exists(filename):
@@ -43,9 +45,10 @@ def update(filename, cfg):
 		return
 	if not os.path.islink(filename):
 		print "file is not a link, can't update"
-		return 
+		return
 
 	cfg.store.update(filename)
+
 
 #@cli('replace')
 def replace(filename, cfg):
@@ -56,6 +59,7 @@ def replace(filename, cfg):
 
 	# TODO implement
 	pass
+
 
 @cli('remove', 'remove a file from the nom repo')
 def remove(filename, cfg):
@@ -72,6 +76,7 @@ def remove(filename, cfg):
 	os.remove(filename)
 	shutil.move(os.path.join(cfg.storeDir, filename), filename)
 
+
 @cli('revert', 'revert a file in the nom repo')
 def revert(filename, cfg):
 	if not cfg.index.exists(filename):
@@ -80,9 +85,10 @@ def revert(filename, cfg):
 		return
 	if not os.path.islink(filename):
 		print "file is not a link, can't revert"
-		return 
+		return
 
 	cfg.store.revert(filename)
+
 
 @cli('status', 'check the status of a file in the nom repo')
 def status(filename, cfg):
