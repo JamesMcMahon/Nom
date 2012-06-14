@@ -1,29 +1,18 @@
 #!/usr/bin/env python
-# 
+#
 # nom - a program that doesn't do much yet
 #
 
-import os
 import sys
+# commands needs to be imported to load global dictionary
+# FIXME fix this
 import commands
 import cli
-from store import GitPythonStore
-from index import FileIndex
-
-class Config:
-	nomDir = os.path.join(os.environ["HOME"], ".nom") 
-	storeDir = os.path.join(nomDir, "store")
-	indexName = "index"
-
-	def __init__(self):
-			# XXX both of these constructors are responsible for creating 
-			# files and directories if they don't exists, 
-			# might want to rethink this
-			self.store = GitPythonStore(self)
-			self.index = FileIndex(self)
+from config import Config
 
 # in the future this might load a config
 # but for now, just use the constants
 cfg = Config()
+print 'cfg ', cfg
 cli.dispatch(cfg)
-sys.exit()	
+sys.exit()
