@@ -9,6 +9,7 @@ setup(
 	author="James McMahon",
 	description="Simple app to store configuration files",
 	packages=['nom'],
+	requires=('GitPython (>=0.3.1)',),
 	entry_points={
 		'console_scripts': [
 			'nom = nom.main:main',
