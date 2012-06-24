@@ -20,4 +20,4 @@ Commands:
 
 Dependencies:  
 
-&nbsp;&nbsp;&nbsp;&nbsp;gitpython - for git storage
+&nbsp;&nbsp;&nbsp;&nbsp;[GitPython](https://github.com/gitpython-developers/GitPython/) - for git storage
