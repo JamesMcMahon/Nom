@@ -50,17 +50,6 @@ def update(filename, cfg):
 	cfg.store.update(filename)
 
 
-#@cli('replace')
-def replace(filename, cfg):
-	if cfg.index.exists(filename):
-		#TODO throw error
-		print "file already exists in index, can't replace"
-		return
-
-	# TODO implement
-	pass
-
-
 @cli('remove', 'remove a file from the nom repo')
 def remove(filename, cfg):
 	if not cfg.index.exists(filename):

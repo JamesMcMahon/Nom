@@ -37,9 +37,6 @@ class FileIndex:
 		if lineNumber is not None:
 			self._removeLine(self.indexPath, lineNumber)
 
-	def replace(self, filename):
-		pass
-
 	def _findLine(self, filename, full=True):
 		absPath = os.path.abspath(filename)
 
