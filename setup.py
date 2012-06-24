@@ -1,5 +1,15 @@
 #!/usr/bin/env python
-from distutils.core import setup
+try:
+	from setuptools import setup
+except ImportError:
+	"""	
+	I am still trying to make sense of this ez_setup stuff
+	commenting it out for now
+
+	from ez_setup import use_setuptools
+	use_setuptools()
+	from setuptools import setup
+	"""
 
 setup(
 	name='nom',
