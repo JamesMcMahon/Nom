@@ -1,6 +1,10 @@
 import os
-import git
-
+import sys
+try:
+	import git
+except ImportError:
+	print 'nom could not find GitPython, please install before running nom'
+	sys.exit()
 
 # when commiting through gitpython there is an issue creating empty commits
 class GitPythonStore:
