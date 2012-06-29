@@ -2,22 +2,16 @@ import os
 import shutil
 import cli
 
-"""
-def checkFile(filename):
-	if not os.path.isfile(filename):
-		# TODO throw error
-		return
-
-	# TODO things to check;
-	# 1. Does the file exist
-	# 2. Do we have access to the file
-	# 3. Is the file a symlink
-	# 4. Is the file a file or directory
-	pass
-"""
 cli = cli.cli_datastruct({})
 
+"""
+TODO things to check;
 
+1. Does the file exist
+2. Do we have access to the file
+3. Is the file a symlink
+4. Is the file a file or directory
+"""
 @cli('add', 'add a file to the nom repo')
 def add(filename, cfg):
 	if cfg.index.exists(filename):
